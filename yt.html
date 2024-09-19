@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorenz CPP Grading System</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: black;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lorenz CPP Grading System😈</h1>
+
+        <div id="login">
+            <h2>Login</h2>
+            <input type="text" id="email" placeholder="Enter your email">
+            <input type="password" id="password" placeholder="Enter your password">
+            <button onclick="login()">Login</button>
+            <p id="login-message"></p>
+        </div>
+
+        <div id="grading" style="display: none;">
+            <h2>Grade Input</h2>
+            <p>Enter your 8 grades:</p>
+            <input type="number" id="grade1" placeholder=" first grade">
+            <input type="number" id="grade2" placeholder="second grade">
+            <input type="number" id="grade3" placeholder="third grade">
+            <input type="number" id="grade4" placeholder="fourth grade">
+            <input type="number" id="grade5" placeholder="fifth grade">
+            <input type="number" id="grade6" placeholder="six grade">
+            <input type="number" id="grade7" placeholder="seven grade">
+            <input type="number" id="grade8" placeholder="eight grade">
+            <button onclick="calculateAverage()">Calculate Average</button>
+            <p id="average"></p>
+        </div>
+    </div>
+
+    <script>
+        function sayHelloFriend() {
+            alert("Hello Friend 😈\nWelcome to Lorenz CPP Grading System.");
+        }
+
+        function login() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let loginMessage = document.getElementById("login-message");
+
+            if (email === "lorenzc++@yahoo.com" && password === "lorenzc++") {
+                loginMessage.textContent = "Successfully logged in!";
+                loginMessage.style.color = "green";
+                document.getElementById("login").style.display = "none";
+                document.getElementById("grading").style.display = "block";
+            } else {
+                loginMessage.textContent = "Failed! Try again.";
+                loginMessage.style.color = "red";
+            }
+        }
+
+        function calculateAverage() {
+            let grades = [
+                parseInt(document.getElementById("grade1").value),
+                parseInt(document.getElementById("grade2").value),
+                parseInt(document.getElementById("grade3").value),
+                parseInt(document.getElementById("grade4").value),
+                parseInt(document.getElementById("grade5").value),
+                parseInt(document.getElementById("grade6").value),
+                parseInt(document.getElementById("grade7").value),
+                parseInt(document.getElementById("grade8").value)
+            ];
+            let average = document.getElementById("average");
+
+            if (grades.some(isNaN)) {
+                average.textContent = "Invalid input! Please enter numbers.";
+                average.style.color = "red";
+            } else {
+                let sum = grades.reduce((a, b) => a + b, 0);
+                let result = sum / 8;
+                average.textContent = "The average is: " + result;
+                average.style.color = "black";
+            }
+        }
+
+        // Call the sayHelloFriend function on page load
+        window.onload = sayHelloFriend;
+    </script>
+</body>
+</html>
